@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    stream:
+      kafka:
+        bindings:
+          output:
+            producer:
+              configuration:
+                value:
+                  serializer: com.example.coin.upbit.support.kafka.CandleSerializer

@@ -1,0 +1,35 @@
+spring:
+  config:
+    import: kafka.yml
+  docker:
+    compose:
+      file: './transformer-server/rabbitmq-compose.yml'
+      enabled: true
+      lifecycle-management: start_and_stop
+      stop:
+        command: down
+        timeout: 10
+  cloud:
+    function:
+      definition: transformUpbitCoinData
+    stream:
+      default-binder: rabbit
+      function:
+        bindings:
+          transformUpbitCoinData-in-0: input
+          transformUpbitCoinData-out-0: output
+      bindings:
+        input:
+          destination: raw-coin-data-upbit.string
+          content-type: text/plain
+          group: coin
+        output:
+          #          producer:
+          #            use-native-encoding: true
+          destination: coin-data-upbit.json
+          content-type: application/json
+
+
+
+server:
+  port: 9999
