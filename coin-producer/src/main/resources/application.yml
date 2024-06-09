@@ -1,0 +1,25 @@
+spring:
+  cloud:
+    function:
+      definition: createCoinDataSupplier
+    stream:
+      poller:
+        fixed-delay: 20000
+      default-binder: rabbit
+      function:
+        bindings:
+          createCoinDataSupplier-out-0: output
+      bindings:
+        output:
+          destination: raw-coin-data-upbit.string
+          content-type: text/plain
+
+coin:
+  upbit:
+    api:
+      base-url: https://api.upbit.com
+      market-code-url: /v1/market/all
+      candles-minutes-url: /v1/candles/minutes/1
+
+server:
+  port: 8086
