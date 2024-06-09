@@ -1,0 +1,8 @@
+name: rabbitmq-server
+services:
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: rabbitmq-stream
+    ports:
+      - "5672:5672"
+      - "15672:15672"
