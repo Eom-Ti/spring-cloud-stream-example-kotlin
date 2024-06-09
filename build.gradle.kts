@@ -33,7 +33,7 @@ subprojects {
     apply(plugin = "io.spring.dependency-management")
 }
 
-val subProjects = arrayOf(":coin-producer")
+val subProjects = arrayOf(":coin-producer", ":coin-consumer", ":transformer-server")
 
 subProjects.forEach { subProject ->
     project(subProject){
@@ -44,7 +44,6 @@ subProjects.forEach { subProject ->
             implementation("org.springframework.cloud:spring-cloud-stream")
             implementation("org.springframework.cloud:spring-cloud-stream-binder-rabbit")
             implementation("org.springframework.cloud:spring-cloud-stream-binder-kafka")
-//        developmentOnly("org.springframework.boot:spring-boot-docker-compose")
             testImplementation("org.springframework.boot:spring-boot-starter-test")
             testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
             testImplementation("org.springframework.cloud:spring-cloud-stream-test-binder")
