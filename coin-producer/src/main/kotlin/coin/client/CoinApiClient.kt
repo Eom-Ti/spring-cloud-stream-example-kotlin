@@ -15,6 +15,6 @@ interface CoinApiClient {
      *
      * @return List<String> marketCodes
      */
-    fun getMarketCodes(): List<String>
+    fun getMarketCodeList(): List<String>
 
 }
