@@ -12,8 +12,7 @@ class UpBitApiClientImpl(
 
     private val upBitProperties: UpBitProperties,
     private val restClient: RestClient,
-
-    ) : CoinApiClient {
+) : CoinApiClient {
 
     lateinit var marketCodes: List<String>
     val log = logger()
@@ -22,25 +21,23 @@ class UpBitApiClientImpl(
         return "test"
     }
 
-    override fun getMarketCodes(): List<String> {
-        if (marketCodes.isNotEmpty()) {
-            return marketCodes
+    override fun getMarketCodeList(): List<String> {
+        if (!::marketCodes.isInitialized) {
+            val requestUri = upBitProperties.marketCodeRequestUri()
+            log.info("[UpbitApiClientImpl.getMarketCodes]requestUri: $requestUri")
+
+            val stringMarketCodes = restClient.get()
+                .uri(requestUri)
+                .retrieve()
+                .body<List<UpBitMarketCode>>()
+
+            log.info("[UpbitApiClientImpl.getMarketCode] marketCodes: $stringMarketCodes")
+
+            marketCodes = stringMarketCodes
+                ?.filter { it.market.startsWith("KRW") }
+                ?.map { it.market }
+                ?.toList() ?: listOf()
         }
-
-        val requestUri = upBitProperties.marketCodeRequestUri()
-        log.info("[UpbitApiClientImpl.getMarketCodes]requestUri: $requestUri")
-
-        val stringMarketCodes = restClient.get()
-            .uri(requestUri)
-            .retrieve()
-            .body<List<UpBitMarketCode>>()
-
-        log.info("[UpbitApiClientImpl.getMarketCode] marketCodes: $stringMarketCodes")
-
-        marketCodes = stringMarketCodes
-            ?.filter { it.marketCode.startsWith("KRW") }
-            ?.map { it.marketCode }
-            ?.toList() ?: listOf()
 
         return marketCodes
     }
