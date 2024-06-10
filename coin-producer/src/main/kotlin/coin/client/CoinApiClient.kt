@@ -1,4 +1,4 @@
-package com.example.coin
+package com.example.coin.client
 
 interface CoinApiClient {
 

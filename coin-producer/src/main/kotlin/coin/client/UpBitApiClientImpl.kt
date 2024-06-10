@@ -1,7 +1,7 @@
-package com.example.coin
+package com.example.coin.client
 
-import com.example.coin.client.UpBitProperties
-import com.example.coin.data.upbit.UpBitMarketCode
+import com.example.coin.client.data.upbit.UpBitMarketCode
+import com.example.coin.client.properties.UpBitProperties
 import com.example.logger
 import org.springframework.stereotype.Component
 import org.springframework.web.client.RestClient
@@ -13,7 +13,7 @@ class UpBitApiClientImpl(
     private val upBitProperties: UpBitProperties,
     private val restClient: RestClient,
 
-) : CoinApiClient {
+    ) : CoinApiClient {
 
     lateinit var marketCodes: List<String>
     val log = logger()
