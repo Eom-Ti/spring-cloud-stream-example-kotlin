@@ -5,7 +5,7 @@ import org.springframework.web.util.UriComponentsBuilder
 import java.net.URI
 
 @ConfigurationProperties(value = "coin.upbit.api")
-class upbitProperties(
+class UpBitProperties(
     private val baseUrl: String,
     private val marketCodeUrl: String,
     private val candlesMinutesUrl: String
