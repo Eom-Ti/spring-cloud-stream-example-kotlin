@@ -17,7 +17,9 @@ pluginManagement {
 rootProject.name = "spring-cloud-stream-example-kotlin"
 include(
     ":coin-producer",
-    "coin-consumer",
-    "transformer-server",
-    "coin-functions"
+    ":coin-consumer",
+    ":transformer-server",
+    ":coin-functions"
 )
+include("producer:coin")
+findProject(":producer:coin")?.name = "coin"

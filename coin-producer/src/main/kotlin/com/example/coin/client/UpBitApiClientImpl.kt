@@ -2,7 +2,7 @@ package com.example.coin.client
 
 import com.example.coin.client.data.upbit.UpBitMarketCode
 import com.example.coin.client.properties.UpBitProperties
-import com.example.logger
+import com.example.com.example.logger
 import org.springframework.stereotype.Component
 import org.springframework.web.client.RestClient
 import org.springframework.web.client.body
