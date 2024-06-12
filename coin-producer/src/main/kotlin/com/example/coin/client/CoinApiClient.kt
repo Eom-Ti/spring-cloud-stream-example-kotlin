@@ -1,5 +1,7 @@
 package com.example.coin.client
 
+import com.example.coin.client.data.CoinMarketCode
+
 interface CoinApiClient {
 
     /**
@@ -15,6 +17,6 @@ interface CoinApiClient {
      *
      * @return List<String> marketCodes
      */
-    fun getMarketCodeList(): List<String>
+    fun getMarketCodeList(): List<CoinMarketCode>
 
 }

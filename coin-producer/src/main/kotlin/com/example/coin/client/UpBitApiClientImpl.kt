@@ -1,5 +1,6 @@
 package com.example.coin.client
 
+import com.example.coin.client.data.CoinMarketCode
 import com.example.coin.client.data.upbit.UpBitMarketCode
 import com.example.coin.client.properties.UpBitProperties
 import com.example.com.example.logger
@@ -14,33 +15,27 @@ class UpBitApiClientImpl(
     private val restClient: RestClient,
 ) : CoinApiClient {
 
-    lateinit var marketCodes: List<String>
     val log = logger()
 
     override fun getCandlesByMinute(marketCode: String): String {
         return "test"
     }
 
-    override fun getMarketCodeList(): List<String> {
-        if (this::marketCodes.isInitialized) {
-            return marketCodes
-        }
-
+    override fun getMarketCodeList(): List<CoinMarketCode> {
         val requestUri = upBitProperties.marketCodeRequestUri()
         log.info("[UpbitApiClientImpl.getMarketCodes]requestUri: $requestUri")
 
-        val stringMarketCodes = restClient.get()
+        val body = restClient.get()
             .uri(requestUri)
             .retrieve()
-            .body<List<UpBitMarketCode>>()
+            .body<List<UpBitMarketCode>>() ?: emptyList()
+
+        return body
 
         log.info("[UpbitApiClientImpl.getMarketCode] marketCodes: $stringMarketCodes")
-
-        marketCodes = stringMarketCodes
-            ?.filter { it.market.startsWith("KRW") }
-            ?.map { it.market }
-            ?.toList() ?: listOf()
-
-        return marketCodes
+//        return stringMarketCodes
+//            ?.filter { it.marketCode.startsWith("KRW") }
+//            ?.map { it.marketCode }
+//            ?.toList() ?: listOf()
     }
 }
