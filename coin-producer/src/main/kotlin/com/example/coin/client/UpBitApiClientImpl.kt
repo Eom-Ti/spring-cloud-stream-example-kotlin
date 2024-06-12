@@ -1,7 +1,7 @@
 package com.example.coin.client
 
-import com.example.coin.client.data.CoinMarketCode
-import com.example.coin.client.data.upbit.UpBitMarketCode
+import com.example.coin.client.data.CoinMarketData
+import com.example.coin.client.data.upbit.UpBitMarketData
 import com.example.coin.client.properties.UpBitProperties
 import com.example.com.example.logger
 import org.springframework.stereotype.Component
@@ -21,16 +21,20 @@ class UpBitApiClientImpl(
         return "test"
     }
 
-    override fun getMarketCodeList(): List<CoinMarketCode> {
+    override fun getMarketCodeList(): List<CoinMarketData> {
         val requestUri = upBitProperties.marketCodeRequestUri()
         log.info("[UpBitApiClientImpl.getMarketCodes]requestUri: $requestUri")
 
-        return restClient.get()
+        val coinMarketCode = restClient.get()
             .uri(requestUri)
             .retrieve()
-            .body<List<UpBitMarketCode>>() ?: emptyList<UpBitMarketCode>().run {
+            .body<List<UpBitMarketData>>() ?: emptyList<UpBitMarketData>().run {
                 log.info("[UpBitApiClientImpl.getMarketCodes] empty result")
             return this
         }
+
+        return coinMarketCode.filter {
+            it.marketCode.startsWith("KRW")
+        }.toList()
     }
 }

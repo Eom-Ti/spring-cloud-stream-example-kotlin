@@ -1,6 +1,6 @@
 package com.example.coin.client.data
 
-interface CoinMarketCode {
+interface CoinMarketData {
     val marketCode: String
     val marketName: String
 }
