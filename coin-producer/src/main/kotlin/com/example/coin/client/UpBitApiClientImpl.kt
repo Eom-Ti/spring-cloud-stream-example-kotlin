@@ -18,7 +18,13 @@ class UpBitApiClientImpl(
     val log = logger()
 
     override fun getCandlesByMinute(marketCode: String): String {
-        return "test"
+        val requestUri = upBitProperties.candlesMinutesRequestUri(marketCode)
+        log.info("[UpBitApiClientImpl.getCandlesByMinute]requestUri: $requestUri")
+
+        return restClient.get()
+            .uri(requestUri)
+            .retrieve()
+            .body<String>() ?: throw IllegalArgumentException("Failed to retrieve data for market code: $marketCode")
     }
 
     override fun getMarketCodeList(): List<CoinMarketData> {
