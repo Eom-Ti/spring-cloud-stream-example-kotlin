@@ -23,19 +23,14 @@ class UpBitApiClientImpl(
 
     override fun getMarketCodeList(): List<CoinMarketCode> {
         val requestUri = upBitProperties.marketCodeRequestUri()
-        log.info("[UpbitApiClientImpl.getMarketCodes]requestUri: $requestUri")
+        log.info("[UpBitApiClientImpl.getMarketCodes]requestUri: $requestUri")
 
-        val body = restClient.get()
+        return restClient.get()
             .uri(requestUri)
             .retrieve()
-            .body<List<UpBitMarketCode>>() ?: emptyList()
-
-        return body
-
-        log.info("[UpbitApiClientImpl.getMarketCode] marketCodes: $stringMarketCodes")
-//        return stringMarketCodes
-//            ?.filter { it.marketCode.startsWith("KRW") }
-//            ?.map { it.marketCode }
-//            ?.toList() ?: listOf()
+            .body<List<UpBitMarketCode>>() ?: emptyList<UpBitMarketCode>().run {
+                log.info("[UpBitApiClientImpl.getMarketCodes] empty result")
+            return this
+        }
     }
 }
