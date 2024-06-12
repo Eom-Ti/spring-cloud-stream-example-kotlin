@@ -3,7 +3,7 @@ spring:
     import: kafka.yml
   docker:
     compose:
-      file: './transformer-server/rabbitmq-compose.yml'
+      file: './transformer-server/kafka-compose.yml'
       enabled: true
       lifecycle-management: start_and_stop
       stop:
@@ -13,7 +13,7 @@ spring:
     function:
       definition: transformUpbitCoinData
     stream:
-      default-binder: rabbit
+      default-binder: kafka
       function:
         bindings:
           transformUpbitCoinData-in-0: input
