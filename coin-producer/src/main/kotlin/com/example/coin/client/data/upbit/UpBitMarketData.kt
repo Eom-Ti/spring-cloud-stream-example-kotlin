@@ -1,8 +1,8 @@
 package com.example.coin.client.data.upbit
 
-import com.example.coin.client.data.CoinMarketCode
+import com.example.coin.client.data.CoinMarketData
 
-data class UpBitMarketCode(
+data class UpBitMarketData(
     override val marketCode: String,
     override val marketName: String
-) : CoinMarketCode
+) : CoinMarketData
