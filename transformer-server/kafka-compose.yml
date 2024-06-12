@@ -1,4 +1,4 @@
----
+name: kafka-server
 services:
   zookeeper:
     image: confluentinc/cp-zookeeper:latest
