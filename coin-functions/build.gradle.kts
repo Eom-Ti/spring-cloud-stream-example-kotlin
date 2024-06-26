@@ -1,6 +1,6 @@
 dependencies {
     // start objectMapper
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.17.0")
+    implementation ("com.fasterxml.jackson.module:jackson-module-kotlin:2.17.+")
 
     // SLF4J API
     implementation("org.slf4j:slf4j-api:2.0.13")
