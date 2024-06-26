@@ -35,6 +35,6 @@ class CoinDataScrapService(
             log.info("finished")
         }
 
-        return@coroutineScope results.joinToString()
+        return@coroutineScope results.joinToString(separator = "")
     }
 }
