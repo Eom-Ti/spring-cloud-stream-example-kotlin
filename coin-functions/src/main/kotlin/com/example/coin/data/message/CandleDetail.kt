@@ -5,11 +5,11 @@ import java.math.BigDecimal
 import java.time.ZonedDateTime
 
 class CandleDetail(
-    private val market: String,
+    val market: String,
 
-    private val price: BigDecimal,
+    val price: BigDecimal,
 
-    private val candleTime: ZonedDateTime,
+    val candleTime: ZonedDateTime,
 
 ): Serializable {
 
