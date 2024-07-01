@@ -21,5 +21,3 @@ include(
     ":transformer-server",
     ":coin-functions"
 )
-include("producer:coin")
-findProject(":producer:coin")?.name = "coin"
