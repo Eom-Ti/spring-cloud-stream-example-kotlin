@@ -7,7 +7,4 @@ dependencies {
 
     // docker compose auto start
     testAndDevelopmentOnly ("org.springframework.boot:spring-boot-docker-compose")
-
-    // datatype-jsr310 start
-    implementation ("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
 }
