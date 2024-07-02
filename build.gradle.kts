@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 val projectGroup: String by project
 val applicationVersion: String by project
 val javaVersion: String by project
