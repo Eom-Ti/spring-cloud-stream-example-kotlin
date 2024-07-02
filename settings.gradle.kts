@@ -2,6 +2,9 @@ pluginManagement {
     val springBootVersion: String by settings
     val springDependencyManagementVersion: String by settings
     val kotlinVersion: String by settings
+    val projectGroup: String by settings
+    val applicationVersion: String by settings
+    val javaVersion: String by settings
 
     resolutionStrategy{
         eachPlugin{
