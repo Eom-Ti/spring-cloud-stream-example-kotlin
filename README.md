@@ -6,7 +6,7 @@ Srping Cloud Stream의 기능을 실험해 볼 수 있도록 구성한 간단한
 해당 프로젝트는 `Kafka`를 사용하여 초기 구축하였으며, 이후 `RabbitMQ`를 사용하여 메시징 프레임워크를 교체하더라도 `Business Logic(Code)` 수정없이 메시징 프레임워크를 교체할 수 있도록 구성되어 있습니다.
 다만 `application.yml` 및 `build.gradle`의 일부 의존성 및 설정은 변경될 수 있습니다.
 
-해당 프로젝트는 Kotlin으로 작성되어 있으며 [Kotlin 코드](https://github.com/Eom-Ti/spring-cloud-stream-example-kotlin)의 경우 현재 작업중입니다.
+해당 프로젝트는 Kotlin으로 작성되어 있으며 [Java 코드](https://github.com/Eom-Ti/spring-cloud-stream-example).또한 작성 완료되었습니다.
 
 # Dictionary
 - Candle : 코인 시세의 변동을 보여주는 봉 차트입니다.(해당 프로젝트에선 분봉단위(1분)로 사용합니다.)
